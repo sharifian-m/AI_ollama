@@ -1,0 +1,24 @@
+# Angular
+node_modules/
+dist/
+tmp/
+environment.ts
+coverage/
+.angular/
+.vscode/
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.dbmdl
+*.log
+*.pdb
+
+# OS Specific
+.DS_Store
+Thumbs.db
+
+# Visual Studio Code
+.vscode/

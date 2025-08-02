@@ -1,0 +1,10 @@
+<!--<h1>GPT Backend Test</h1>-->
+<!--<button (click)="testBackend()">Call Backend</button>-->
+<!--<p *ngIf="response">{{ response }}</p>-->
+<hr/>
+<hr/>
+<hr/>
+<hr/>
+<input [(ngModel)]="userText" placeholder="دستور خود را وارد کنید..." />
+<button (click)="sendCommand()">ارسال</button>
+<p *ngIf="interpretedCommand">تفسیر: {{ interpretedCommand }}</p>
