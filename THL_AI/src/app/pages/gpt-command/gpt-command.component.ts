@@ -11,15 +11,19 @@ import {Router} from '@angular/router';
 export class GptCommandComponent {
 
   userText = '';
-  interpretedCommand = '';
+  interpretedCommand:any ;
 
   constructor(private aiServiceService: AiServiceService, private router: Router) {}
 
   sendCommand() {
       this.aiServiceService.interpret(this.userText).subscribe(res => {
-        const parsed = JSON.parse(res.command);
-        if (parsed.action === 'navigate' && parsed.target === 'voucher') {
-          this.router.navigate(['/voucher']);
+        const cleaned = res.command.replace(/```json\n?/, '').replace(/```$/, '');
+        this.interpretedCommand = JSON.parse(cleaned);
+        console.log('this.interpretedCommand',this.interpretedCommand)
+        console.log('this.interpretedCommand.action.includes(\'navigate\')',this.interpretedCommand.action.includes('navigate'))
+        console.log('this.interpretedCommand.target=== \'voucher\'',this.interpretedCommand.target==='voucher')
+        if (this.interpretedCommand.action.includes('navigate') && this.interpretedCommand.target ==='voucher') {
+          this.router.navigate(['voucher']);
         } else {
           alert('دستور ناشناخته');
         }

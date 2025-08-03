@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AiServiceService} from '../../ai-service.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-voucher',
@@ -9,5 +9,9 @@ import {AiServiceService} from '../../ai-service.service';
 })
 export class VoucherComponent {
 
-
+constructor(private route:Router) {
+}
+  goBack() {
+    this.route.navigate(['gpt'])
+  }
 }

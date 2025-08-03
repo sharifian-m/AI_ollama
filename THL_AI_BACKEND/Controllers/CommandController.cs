@@ -38,6 +38,7 @@ namespace GptApi.Controllers
             using var doc = JsonDocument.Parse(resultJson);
             var output = doc.RootElement.GetProperty("response").GetString();
 
+
             return Ok(new { command = output });
         }
     }
