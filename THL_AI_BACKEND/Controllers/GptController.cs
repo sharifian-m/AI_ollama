@@ -4,6 +4,8 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using GptApi.Services;
+using GptApi.models;
+
 
 namespace GptApi.Controllers
 {
@@ -25,7 +27,8 @@ namespace GptApi.Controllers
 
             var payload = new
             {
-                model = "gemma3n", // یا "llama3" یا هر چیزی که مدل ollama هست
+//              model = "phi3:mini",
+                model = "gemma3n",
                 prompt = prompt,
                 stream = false
             };
@@ -39,8 +42,8 @@ namespace GptApi.Controllers
             var output = doc.RootElement.GetProperty("response").GetString();
 
             return Ok(new { command = output });
+
         }
     }
-
 
 }

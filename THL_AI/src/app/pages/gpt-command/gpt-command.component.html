@@ -1,14 +1,15 @@
 <!--<h1>GPT Backend Test</h1>-->
 <!--<button (click)="testBackend()">Call Backend</button>-->
 <!--<p *ngIf="response">{{ response }}</p>-->
-<br/>
-<br/>
-<br/>
-<br/>
-<div >
+
+<div class="container">
   <input [(ngModel)]="userText" placeholder="دستور خود را وارد کنید..." />
+
   <button (click)="sendCommand()">ارسال</button>
-  <p *ngIf="interpretedCommand">تفسیر: </p>
-  <p *ngIf="interpretedCommand">عملیات: {{ interpretedCommand?.action }}</p>
-  <p *ngIf="interpretedCommand">به: {{ interpretedCommand?.target }}</p>
+  <div class="responseContainer">
+<!--    <p *ngIf="interpretedCommand">تفسیر: </p>-->
+    <p *ngIf="interpretedCommand"  class="action">عملیات: {{ interpretedCommand?.action }}</p>
+    <p *ngIf="interpretedCommand" class="target">به: {{ interpretedCommand?.target }}</p>
+  </div>
+
 </div>
