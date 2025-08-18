@@ -27,7 +27,6 @@ namespace GptApi.Controllers
 
             var payload = new
             {
-//              model = "phi3:mini",
                 model = "gemma3n",
                 prompt = prompt,
                 stream = false

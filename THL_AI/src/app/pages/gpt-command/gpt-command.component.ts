@@ -13,9 +13,6 @@ export class GptCommandComponent {
   userText = '';
   interpretedCommand: any;
 
-  captchaUrl = '/api/captcha?' + Date.now();
-  captchaInput = '';
-
   constructor(private commandInterpreterService: CommandInterpreterService,
               private router: Router,
               private http: HttpClient) {
@@ -26,27 +23,11 @@ export class GptCommandComponent {
       const jsonRes = res.command.replace(/```json\n?/, '').replace(/```$/, '');
       this.interpretedCommand = JSON.parse(jsonRes);
       if (this.interpretedCommand.action.includes('navigate') && this.interpretedCommand.target === 'voucher') {
-        this.router.navigate(['voucher', this.interpretedCommand.target]);
+        this.router.navigate(['voucher']);
       } else {
         return
       }
     });
-  }
-
-  reloadCaptcha() {
-    this.captchaUrl = '/api/captcha?' + Date.now(); // prevent caching
-  }
-
-  submit() {
-    this.http.post('/api/captcha/verify', {code: this.captchaInput})
-      .subscribe((res: any) => {
-        if (res.success) {
-          alert('CAPTCHA passed');
-        } else {
-          alert('CAPTCHA failed');
-          this.reloadCaptcha();
-        }
-      });
   }
 
 }
